@@ -2,6 +2,7 @@ package cardgame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class Dealer {
@@ -28,7 +29,7 @@ public class Dealer {
      *   A list containing all cards, in a random order.
      */
     public static List<Card> getShuffledDeck() {
-        final List<Card> deck = new ArrayList<>();
+        final List<Card> deck = new ArrayList<Card>();
         // Add all cards to the deck, in order.
         for (Card.Suit suit : Card.Suit.values())
             for (Card.Number number : Card.Number.values())
@@ -58,7 +59,17 @@ public class Dealer {
         //   - Add cards to the hand, removing them from the deck.
         //   - Add the hand to the list of hands.
         // - Return the list of hands.
-        return null;
+      List<Card> deck = getShuffledDeck();
+      List<List<Card>> hands = new ArrayList<List<Card>>();
+        for (int i = 0; i < numPlayers; i++) {
+          List<Card> hand = new ArrayList<Card>();
+          for (int k = 0; k < numCards; k++) {
+            hand.add(deck.get(0));
+            deck.remove(0);
+          }
+          hands.add(hand);
+        }
+        return hands;
     }
 
     public static void main(String[] args) {

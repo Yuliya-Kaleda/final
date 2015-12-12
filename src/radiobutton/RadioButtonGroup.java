@@ -9,6 +9,8 @@ package radiobutton;
  * button group has 4 buttons, they are numbered 0, 1, 2, and 3.
  */
 public class RadioButtonGroup {
+  private int numButtons;
+  private int initial;
 
     /**
      * Creates a group of radio buttons.
@@ -21,7 +23,8 @@ public class RadioButtonGroup {
      *   The initial button number is invalid.
      */
     public RadioButtonGroup(int numButtons, int initial) {
-        // TODO: Implement this method.
+      this.numButtons = numButtons;
+      this.initial = initial;
     }
 
     /**
@@ -39,7 +42,12 @@ public class RadioButtonGroup {
      *   The button number is invalid.
      */
     public void select(int button) {
-        // TODO: Implement this method.
+      if (button > numButtons || button < 0) {
+        throw new IllegalStateException("Invalid number");
+      }
+      else {
+        this.initial = button;
+      }
     }
 
     /**
@@ -50,10 +58,28 @@ public class RadioButtonGroup {
      *   The button number is invalid.
      */
     public boolean isSelected(int button) {
-        // TODO: Implement this method.
-        return false;
+      if (button > numButtons || button < 0) {
+        throw new IllegalStateException("Invalid number");
+      }
+      return initial == button;
     }
 
-    // TODO: Add attributes and helper methods as needed.
+  public int getNumButtons() {
+    return numButtons;
+  }
 
+  public void setNumButtons(int numButtons) {
+    if (numButtons <= 0 ) {
+      throw new IllegalStateException("The number of buttons cannot be negative!");
+    }
+    this.numButtons = numButtons;
+  }
+
+  public int getInitial() {
+    return initial;
+  }
+
+  public void setInitial(int initial) {
+    this.initial = initial;
+  }
 }

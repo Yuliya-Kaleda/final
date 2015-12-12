@@ -3,7 +3,8 @@ package strq;
 public class Test {
 
     public static void main(String[] args) {
-        StringQueue queue = null;  // FIXME: Use an instance of your SimpleStringQueue.
+        StringQueue queue = new SimpleStringQueue();  // FIXME: Use an instance of your
+        // SimpleStringQueue.
         queue.enqueue("Hello, world!");
         queue.enqueue("  ");
         queue.enqueue("This is a test.");
